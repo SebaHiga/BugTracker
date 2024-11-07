@@ -1,3 +1,7 @@
+package DataBase.Tables;
+
+import DataBase.DBManager;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;

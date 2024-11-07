@@ -1,5 +1,8 @@
-import javax.swing.*;
-import java.util.List;
+import DataBase.Tables.TableManager;
+import DataBase.Users.ServiceException;
+import DataBase.Users.User;
+import DataBase.Users.UserService;
+import Panels.MainFrame;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,7 +22,7 @@ public class Main {
             userService.addUser(new User("admin", "admin@admin.com", "password"));
         }
         catch (ServiceException exception){
-            // User admin already created
+            // DataBase.Users.User admin already created
         }
 
     }

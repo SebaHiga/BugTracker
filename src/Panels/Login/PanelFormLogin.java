@@ -1,3 +1,5 @@
+package Panels.Login;
+
 import javax.swing.*;
 import java.awt.*;
 

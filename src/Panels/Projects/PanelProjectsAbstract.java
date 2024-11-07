@@ -1,3 +1,8 @@
+package Panels.Projects;
+
+import Panels.MainFrame;
+import Panels.PanelAbstract;
+
 import javax.swing.*;
 
 public abstract class PanelProjectsAbstract extends PanelAbstract {

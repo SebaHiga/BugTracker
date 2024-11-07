@@ -1,9 +1,13 @@
+package DataBase.Users;
+
+import DataBase.ExceptionObjectDuplicated;
+
 import java.util.List;
 
 public class UserService {
     private UserDAO dao;
 
-    UserService(){
+    public UserService(){
         this.dao = new UserDAOH2Impl();
     }
 

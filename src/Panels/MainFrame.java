@@ -1,5 +1,9 @@
+package Panels;
+
+import Panels.Login.PanelLogin;
+import Panels.Projects.PanelProjectsUser;
+
 import javax.swing.*;
-import java.awt.*;
 
 public class MainFrame extends JFrame{
     private JFrame mainFrame;
@@ -7,7 +11,7 @@ public class MainFrame extends JFrame{
     private PanelLogin panelLogin;
     private PanelProjectsUser panelProjectsUser;
 
-    MainFrame(){
+    public MainFrame(){
         this.mainFrame = new JFrame();
         this.mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.panelLogin = new PanelLogin(this);

@@ -1,3 +1,5 @@
+package DataBase.Users;
+
 import java.util.List;
 
 public class User {
@@ -8,7 +10,6 @@ public class User {
     private String pass;
 
     List<Account> cuentaList;
-
 
     public User() {
     }
@@ -45,7 +46,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "DataBase.Users.User{" +
                 "name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", pass='" + pass + '\'' +

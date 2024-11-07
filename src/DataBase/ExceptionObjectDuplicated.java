@@ -1,3 +1,5 @@
+package DataBase;
+
 public class ExceptionObjectDuplicated extends Exception {
     public ExceptionObjectDuplicated() {
     }

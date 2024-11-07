@@ -1,3 +1,9 @@
+package Panels.Login;
+
+import DataBase.Users.UserService;
+import Panels.PanelAbstract;
+import Panels.MainFrame;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

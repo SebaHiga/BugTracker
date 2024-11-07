@@ -1,3 +1,5 @@
+package Panels.Login;
+
 import javax.swing.*;
 
 public class PanelOkCancel extends JPanel {

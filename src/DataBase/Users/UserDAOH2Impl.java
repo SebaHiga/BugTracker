@@ -1,6 +1,11 @@
+package DataBase.Users;
+
+import DataBase.DAOException;
+import DataBase.DBManager;
+import DataBase.ExceptionObjectDuplicated;
+
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class UserDAOH2Impl implements UserDAO {
@@ -55,7 +60,6 @@ public class UserDAOH2Impl implements UserDAO {
             } catch (SQLException sqlException) {
                 sqlException.printStackTrace();
             }
-//            throw new DAOException("ATENCION NO SE PUEDO CERRAR LA CXN");
         }
     }
 
