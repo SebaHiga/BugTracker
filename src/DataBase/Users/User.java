@@ -9,8 +9,6 @@ public class User {
     private String email;
     private String pass;
 
-    List<Account> cuentaList;
-
     public User() {
     }
 

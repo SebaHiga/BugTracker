@@ -1,24 +1,22 @@
-package DataBase.Users;
+package DataBase.Projects;
 
 import DataBase.DAOException;
 import DataBase.DBManager;
 import DataBase.ExceptionObjectDuplicated;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAOH2Impl implements UserDAO {
-
-    public void create(User user) throws ExceptionObjectDuplicated {
-        String name = user.getName();
-        String email = user.getEmail();
-        String pass = user.getPass();
-
+public class TicketDAOH2Impl implements TicketDAO{
+    public void create(Ticket ticket) throws ExceptionObjectDuplicated {
         Connection connection = DBManager.connect();
         try {
             Statement s = connection.createStatement();
-            String sql = "INSERT INTO users (name, email, pass) VALUES ('" + name + "', '" + email + "', '" + pass + "')";
+            String sql = "INSERT INTO tickets (internal_id, description) VALUES ('" + ticket.getInternalId() + "', '" + ticket.getDescription() + "')";
             s.executeUpdate(sql);
             connection.commit();
         } catch (SQLException sqlException) {
@@ -40,8 +38,8 @@ public class UserDAOH2Impl implements UserDAO {
         }
     }
 
-    public void delete(User user) throws DAOException {
-        String sql = "DELETE FROM users WHERE name = '" + user.getName() + "'";
+    public void delete(String internalId) throws DAOException {
+        String sql = "DELETE FROM tickets WHERE internal_id = '" + internalId + "'";
         Connection connection = DBManager.connect();
         try {
             Statement statement = connection.createStatement();
@@ -64,12 +62,8 @@ public class UserDAOH2Impl implements UserDAO {
     }
 
     // Updates user's email and pass
-    public void update(User user) {
-        String name = user.getName();
-        String email = user.getEmail();
-        String pass = user.getPass();
-
-        String sql = "UPDATE users set email = '" + email + "', pass = '" + pass + "' WHERE name = '" + name + "'";
+    public void update(Ticket ticket) {
+        String sql = "UPDATE ticket set description = '" + ticket.getDescription() + "' WHERE internal_id = '" + ticket.getInternalId() + "'";
         Connection connection = DBManager.connect();
         try {
             Statement statement = connection.createStatement();
@@ -91,22 +85,19 @@ public class UserDAOH2Impl implements UserDAO {
         }
     }
 
-    public List<User> getList() {
-        List<User> ret = new ArrayList<>();
-        String sql = "SELECT * FROM users";
+    public List<Ticket> getList() {
+        List<Ticket> ret = new ArrayList<>();
+        String sql = "SELECT * FROM tickets";
         Connection connection = DBManager.connect();
+
+        // TODO: Create new connection with safe statement creation
         try {
             Statement s = connection.createStatement();
             ResultSet rs = s.executeQuery(sql);
 
-
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String mail = rs.getString("email");
-                String pass = rs.getString("pass");
-                User u = new User(name, mail, pass);
-                ret.add(u);
+                Ticket t = new Ticket(rs.getString("internal_id"), rs.getString("description"));
+                ret.add(t);
 
             }
         } catch (SQLException sqlException) {
@@ -125,20 +116,15 @@ public class UserDAOH2Impl implements UserDAO {
         return ret;
     }
 
-    public User getUserByName(String name) {
-        String sql = "SELECT * FROM users WHERE name = '" + name + "'";
+    public Ticket getTicketById(String internalId) {
+        String sql = "SELECT * FROM tickets WHERE internal_id = '" + internalId + "'";
         Connection connection = DBManager.connect();
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+            ResultSet rs = statement.executeQuery(sql);
 
-
-            if (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String userName = resultSet.getString("name");
-                String mail = resultSet.getString("email");
-                String pass = resultSet.getString("pass");
-                return  new User(userName, mail, pass);
+            if (rs.next()) {
+                return new Ticket(rs.getString("internal_id"), rs.getString("description"));
             }
 
         } catch (SQLException sqlException) {

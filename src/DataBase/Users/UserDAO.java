@@ -7,14 +7,14 @@ import java.util.List;
 
 public interface UserDAO {
 
-    void userCreate(User user) throws ExceptionObjectDuplicated;
+    void create(User user) throws ExceptionObjectDuplicated;
 
-    void userDelete(String username) throws DAOException;
+    void delete(User user) throws DAOException;
 
-    void userUpdate(User user);
+    void update(User user);
 
     User getUserByName(String username);
 
-    List<User> getUserList();
+    List<User> getList();
 
 }

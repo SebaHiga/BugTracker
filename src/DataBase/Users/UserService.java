@@ -1,30 +1,31 @@
 package DataBase.Users;
 
 import DataBase.ExceptionObjectDuplicated;
+import DataBase.ServiceException;
 
 import java.util.List;
 
 public class UserService {
-    private UserDAO dao;
+    private final UserDAO dao;
 
     public UserService(){
         this.dao = new UserDAOH2Impl();
     }
 
-    public List<User> getUserList() throws ServiceException {
-        return this.dao.getUserList();
+    public List<User> getList() throws ServiceException {
+        return this.dao.getList();
     }
 
-    public void addUser(User user) throws ServiceException {
+    public void add(User user) throws ServiceException {
         try {
-            this.dao.userCreate(user);
+            this.dao.create(user);
         } catch (ExceptionObjectDuplicated e) {
             throw new ServiceException(e);
         }
     }
 
-    public void editUser(User user) throws ServiceException {
-        this.dao.userUpdate(user);
+    public void edit(User user) throws ServiceException {
+        this.dao.update(user);
     }
 
     public boolean verifyUserIdentity(String userName, String userPass){

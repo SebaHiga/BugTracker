@@ -36,7 +36,6 @@ public class PanelLogin extends PanelAbstract implements ActionListener {
             String user = this.formLogin.getUsernameTxt().getText();
             String pass = this.formLogin.getPasswordTxt().getText();
             if (service.verifyUserIdentity(user, pass)){
-                System.out.println("YES!");
                 this.mainFrame.displayPanelProjectsUser();
             }
         }

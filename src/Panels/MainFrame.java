@@ -31,6 +31,5 @@ public class MainFrame extends JFrame{
         this.mainFrame.getContentPane().add(this.panelProjectsUser);
         this.mainFrame.pack();
         this.mainFrame.setVisible(true);
-
     }
 }

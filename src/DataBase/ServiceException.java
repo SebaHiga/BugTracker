@@ -1,4 +1,4 @@
-package DataBase.Users;
+package DataBase;
 
 public class ServiceException extends Exception {
 
