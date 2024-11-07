@@ -9,10 +9,7 @@ public class Main {
         initializeDemo();
 
         var mainFrame = new MainFrame();
-
-        mainFrame.displayLoginPane();
     }
-
 
     public static void initializeDemo(){
 

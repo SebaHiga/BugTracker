@@ -2,17 +2,18 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PanelLogin extends JPanel implements ActionListener {
+public class PanelLogin extends PanelAbstract implements ActionListener {
 
-    private FormLogin formLogin;
+    private PanelFormLogin formLogin;
     private PanelOkCancel panelOkCancel;
 
-
-    public PanelLogin() {
+    public PanelLogin(MainFrame mainFrame) {
+        super(mainFrame);
         build();
     }
+
     public void build() {
-        this.formLogin = new FormLogin();
+        this.formLogin = new PanelFormLogin();
         this.panelOkCancel = new PanelOkCancel();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -30,6 +31,7 @@ public class PanelLogin extends JPanel implements ActionListener {
             String pass = this.formLogin.getPasswordTxt().getText();
             if (service.verifyUserIdentity(user, pass)){
                 System.out.println("YES!");
+                this.mainFrame.displayPanelProjectsUser();
             }
         }
     }

@@ -1,14 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class FormLogin extends JPanel {
+public class PanelFormLogin extends JPanel {
 
     private JLabel usernameLbl;
     private JLabel passwordLbl;
     private JTextField usernameTxt;
     private JTextField passwordTxt;
 
-    public FormLogin() {
+    public PanelFormLogin() {
         build();
     }
 
