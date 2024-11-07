@@ -1,30 +1,30 @@
 import java.util.List;
 
-public class Usuario {
+public class User {
 
     private int id;
-    private String user;
+    private String name;
     private String email;
     private String pass;
 
-    List<Cuenta> cuentaList;
+    List<Account> cuentaList;
 
 
-    public Usuario() {
+    public User() {
     }
 
-    public Usuario(String user, String email, String pass) {
-        this.user = user;
+    public User(String user, String email, String pass) {
+        this.name = user;
         this.pass = pass;
         this.email = email;
     }
 
-    public String getUser() {
-        return user;
+    public String getName() {
+        return name;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -45,8 +45,8 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "user='" + user + '\'' +
+        return "User{" +
+                "name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", pass='" + pass + '\'' +
                 '}';

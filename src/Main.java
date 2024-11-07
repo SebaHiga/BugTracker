@@ -10,18 +10,18 @@ public class Main {
         tm.createUserTable();
 
 
-        UsuarioDAO dao = new UsuarioDAOH2Impl();
+        UserDAO dao = new UserDAOH2Impl();
 
         String user = "user1";
         String email = "email1";
         String pass = "pass1";
-        Usuario aInsertar = new Usuario();
-        aInsertar.setUser(user);
+        User aInsertar = new User();
+        aInsertar.setName(user);
         aInsertar.setEmail(email);
         aInsertar.setPass(pass);
         try {
-            dao.crearUsuario(aInsertar);
-        } catch (ObjetoDuplicadoException e) {
+            dao.userCreate(aInsertar);
+        } catch (ExceptionObjectDuplicated e) {
             System.out.println("EL USUARIO "+user+"YA EXISTE");
         }
 
@@ -30,43 +30,43 @@ public class Main {
         String userOtro = "userOtro";
         String emailOtro = "emailOtro";
         String passOtro = "passOtro";
-        Usuario aInsertarOtro = new Usuario();
-        aInsertarOtro.setUser(userOtro);
+        User aInsertarOtro = new User();
+        aInsertarOtro.setName(userOtro);
         aInsertarOtro.setEmail(emailOtro);
         aInsertarOtro.setPass(passOtro);
         try {
-            dao.crearUsuario(aInsertarOtro);
-        } catch (ObjetoDuplicadoException e) {
+            dao.userCreate(aInsertarOtro);
+        } catch (ExceptionObjectDuplicated e) {
             System.out.println("EL USUARIO "+user+"YA EXISTE");
         }
 
         String userx = "user1";
         String emailx = "emailx";
         String passx = "passx";
-        Usuario paraEditar = new Usuario(userx, emailx, passx);
+        User paraEditar = new User(userx, emailx, passx);
 //		try {
 //			dao.crearUsuario(paraEditar);
 //		} catch (ObjectoDuplicadoException e) {
 //			System.out.println("EL USUARIO "+userx+"YA EXISTE");
 //		}
-        dao.actualizaUsuario(paraEditar);
+        dao.userUpdate(paraEditar);
 
         System.out.println("Ahora voy a mostrar el usuario recien cargado");
         String unUser = "user1";
-        Usuario usuarioBase = dao.muestraUsuario(unUser);
-        System.out.println(usuarioBase);
+        User userBase = dao.getUserByName(unUser);
+        System.out.println(userBase);
         System.out.println("---------");
 
         System.out.println("Voy a modificar un usuario");
         String user2 = "userx";
         String email2 = "email@mail.com";
         String pass2 = "password";
-        Usuario aEditar = new Usuario(user2, email2, pass2);
-        dao.actualizaUsuario(aEditar);
+        User aEditar = new User(user2, email2, pass2);
+        dao.userUpdate(aEditar);
 
         System.out.println("Tengo estos usuarios:");
-        List<Usuario> listaTodosLosUsuarios = dao.listaTodosLosUsuarios();
-        for (Usuario usuario : listaTodosLosUsuarios) {
+        List<User> listaTodosLosUsers = dao.getUserList();
+        for (User usuario : listaTodosLosUsers) {
             System.out.println(usuario);
         }
         System.out.println("------");
@@ -74,7 +74,7 @@ public class Main {
 
         System.out.println("Voy a borrar un usuario segun su username");
         try {
-            dao.borraUsuario("user1");
+            dao.userDelete("user1");
         } catch (DAOException e) {
             String mensdaje = "HUBO UN PRBLEMA AL BORRAR - " + e.getMessage();
             JOptionPane.showMessageDialog(null, mensdaje);
@@ -82,8 +82,8 @@ public class Main {
         }
 
         System.out.println("Tengo estos usuarios:");
-        List<Usuario> otraListaUsuarios = dao.listaTodosLosUsuarios();
-        for (Usuario u : otraListaUsuarios ) {
+        List<User> otraListaUsers = dao.getUserList();
+        for (User u : otraListaUsers) {
             System.out.println(u);
         }
         System.out.println("------");
