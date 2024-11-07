@@ -122,7 +122,7 @@ public class UserDAOH2Impl implements UserDAO {
     }
 
     public User getUserByName(String name) {
-        String sql = "SELECT * FROM users WHERE user = '" + name + "'";
+        String sql = "SELECT * FROM users WHERE name = '" + name + "'";
         Connection connection = DBManager.connect();
         try {
             Statement statement = connection.createStatement();
@@ -131,7 +131,7 @@ public class UserDAOH2Impl implements UserDAO {
 
             if (resultSet.next()) {
                 int id = resultSet.getInt("id");
-                String userName = resultSet.getString("user");
+                String userName = resultSet.getString("name");
                 String mail = resultSet.getString("email");
                 String pass = resultSet.getString("pass");
                 return  new User(userName, mail, pass);

@@ -8,7 +8,7 @@ public class TableManager {
 
         Connection c = DBManager.connect();
 
-        String sql = "CREATE TABLE users ( id INTEGER IDENTITY, user VARCHAR(256) UNIQUE, email VARCHAR(256), pass VARCHAR(10))";
+        String sql = "CREATE TABLE users ( id INTEGER IDENTITY, name VARCHAR(256) UNIQUE, email VARCHAR(256), pass VARCHAR(10))";
 
         try {
             Statement s = c.createStatement();
