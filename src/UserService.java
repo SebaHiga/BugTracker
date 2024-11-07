@@ -22,4 +22,14 @@ public class UserService {
     public void editUser(User user) throws ServiceException {
         this.dao.userUpdate(user);
     }
+
+    public boolean verifyUserIdentity(String userName, String userPass){
+        var user = this.dao.getUserByName(userName);
+
+        if (user == null){
+            return false;
+        }
+
+        return user.getName().equals(userName) && user.getPass().equals(userPass);
+    }
 }

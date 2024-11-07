@@ -25,13 +25,12 @@ public class PanelLogin extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if(actionEvent.getSource() == this.panelOkCancel.getOkBtn()) {
-//            UsuarioDAO d = new UsuarioDAoImpl();
-//            String user = this.loginFormPanel.getUsernameTxt().getText();
-//            String pass = this.loginFormPanel.getPasswordTxt().getText();
-//            User u = d.findByUserAndPass(user, pass);
-//            if(u != null) {
-//                System.out.println("LOGIN EXITOSO");
-//            }
+            UserService service = new UserService(new UserDAOH2Impl());
+            String user = this.formLogin.getUsernameTxt().getText();
+            String pass = this.formLogin.getPasswordTxt().getText();
+            if (service.verifyUserIdentity(user, pass)){
+                System.out.println("YES!");
+            }
         }
     }
 }

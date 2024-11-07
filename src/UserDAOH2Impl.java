@@ -151,6 +151,7 @@ public class UserDAOH2Impl implements UserDAO {
                 sqlException.printStackTrace();
             }
         }
+
         return null;
     }
 }
