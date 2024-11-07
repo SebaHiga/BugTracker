@@ -8,11 +8,11 @@ import java.util.List;
 public interface TicketDAO {
     void create(Ticket ticket) throws ExceptionObjectDuplicated;
 
-    void delete(String internalId) throws DAOException;
+    void delete(java.lang.String internalId) throws DAOException;
 
     void update(Ticket ticket);
 
-    Ticket getTicketById(String internalId);
+    Ticket getTicketById(java.lang.String internalId);
 
     List<Ticket> getList();
 }

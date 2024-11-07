@@ -7,7 +7,7 @@ import DataBase.Users.UserService;
 import Panels.MainFrame;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(java.lang.String[] args) {
         var tableManager = new TableManager();
         tableManager.createUsersTable();
         tableManager.createTicketTable();
@@ -24,6 +24,14 @@ public class Main {
 
         try{
             userService.add(new User("admin", "admin@admin.com", "password"));
+            ticketService.add(new Ticket("BGT-001", "Primer bug de prueba"));
+            ticketService.add(new Ticket("BGT-002", "Segundo bug de prueba"));
+            ticketService.add(new Ticket("BGT-003", "Tercer bug de prueba"));
+        }
+        catch (ServiceException exception){
+            // DataBase.Users.User admin already created
+        }
+        try{
             ticketService.add(new Ticket("BGT-001", "Primer bug de prueba"));
             ticketService.add(new Ticket("BGT-002", "Segundo bug de prueba"));
             ticketService.add(new Ticket("BGT-003", "Tercer bug de prueba"));

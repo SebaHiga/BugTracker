@@ -12,7 +12,7 @@ public class TicketService {
         this.dao = new TicketDAOH2Impl();
     }
 
-    public List<Ticket> getList() throws ServiceException {
+    public List<Ticket> getList() {
         return this.dao.getList();
     }
 
