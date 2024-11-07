@@ -1,8 +1,17 @@
 import javax.swing.*;
 
 public class MainFrame extends JFrame{
-    public void show() {
-        JOptionPane.showMessageDialog(this, "Mensaje de error",
-                "titulo ventana error", JOptionPane.ERROR_MESSAGE);
+    private JFrame mainFrame;
+
+    MainFrame(){
+        this.mainFrame = new JFrame();
+        this.mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.mainFrame.pack();
+        this.mainFrame.setVisible(true);
+        this.mainFrame.getContentPane().add(new PanelLogin());
+    }
+
+    public void displayLoginPane() {
+        this.mainFrame.getContentPane().add(new PanelLogin());
     }
 }

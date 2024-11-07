@@ -153,6 +153,4 @@ public class UserDAOH2Impl implements UserDAO {
         }
         return null;
     }
-
-
 }
