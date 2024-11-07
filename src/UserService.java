@@ -3,8 +3,8 @@ import java.util.List;
 public class UserService {
     private UserDAO dao;
 
-    UserService(UserDAO dao){
-        this.dao = dao;
+    UserService(){
+        this.dao = new UserDAOH2Impl();
     }
 
     public List<User> getUserList() throws ServiceException {

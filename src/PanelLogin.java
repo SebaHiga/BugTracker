@@ -25,7 +25,7 @@ public class PanelLogin extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if(actionEvent.getSource() == this.panelOkCancel.getOkBtn()) {
-            UserService service = new UserService(new UserDAOH2Impl());
+            UserService service = new UserService();
             String user = this.formLogin.getUsernameTxt().getText();
             String pass = this.formLogin.getPasswordTxt().getText();
             if (service.verifyUserIdentity(user, pass)){

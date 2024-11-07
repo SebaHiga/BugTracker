@@ -16,7 +16,7 @@ public class Main {
 
     public static void initializeDemo(){
 
-        UserService userService = new UserService(new UserDAOH2Impl());
+        UserService userService = new UserService();
 
         try{
             userService.addUser(new User("admin", "admin@admin.com", "password"));
