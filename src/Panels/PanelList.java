@@ -26,6 +26,22 @@ public class PanelList<T> extends JPanel {
         this.add(this.labelList);
     }
 
+    public void rebuild(List<T> list) {
+        this.removeAll();
+
+        var defList = new DefaultListModel<String>();
+
+         this.list = list;
+         labelList.removeAll();
+
+        for (T t : this.list) {
+            defList.addElement(((EntityAbstract) t).getLabel());
+        }
+
+        this.labelList = new JList<String>(defList);
+        this.add(this.labelList);
+    }
+
     public JList<String> getLabelList() {
         return this.labelList;
     }

@@ -1,4 +1,4 @@
-package Panels.Login;
+package Panels;
 
 import javax.swing.*;
 
