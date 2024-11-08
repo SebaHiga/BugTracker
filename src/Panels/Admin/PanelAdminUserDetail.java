@@ -1,14 +1,10 @@
 package Panels.Admin;
 
-import DataBase.ServiceException;
 import DataBase.Users.User;
-import DataBase.Users.UserService;
 import Panels.PanelOkCancel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class PanelAdminUserDetail extends JPanel {
     protected PanelAdminUsersView panelParent;
@@ -44,7 +40,7 @@ public class PanelAdminUserDetail extends JPanel {
         this.passwordTF.setText(user.getPass());
     }
 
-    public void cleanTF(){
+    public void clearAllTextFields(){
         this.populateWithUser(new User("", "", ""));
     }
 
@@ -59,13 +55,21 @@ public class PanelAdminUserDetail extends JPanel {
             setTFDisabled(this.emailTF);
             setTFDisabled(this.passwordTF);
         }
+        else{
+            setTFEnabled(this.nameTF);
+            setTFEnabled(this.emailTF);
+            setTFEnabled(this.passwordTF);
+        }
     }
 
     private void setTFDisabled(JTextField tf){
         tf.setBackground(new Color(240, 240, 240));
         tf.setForeground(Color.gray);
     }
-
+    private void setTFEnabled(JTextField tf){
+        tf.setBackground(new Color(255, 255, 255));
+        tf.setForeground(Color.black);
+    }
     JPanel getFormPane() {
         var formGrid = new JPanel();
         formGrid.setLayout(new GridLayout(3, 3));

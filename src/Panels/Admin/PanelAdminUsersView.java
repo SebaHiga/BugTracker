@@ -70,10 +70,9 @@ public class PanelAdminUsersView extends JPanel implements ActionListener, ListS
         showNormal();
     }
 
-    private void showNormal(){
-        this.leftBar.setVisible(true);
+    public void showNormal(){
 
-        this.panelUsers.getLabelList().addListSelectionListener(this);
+        this.refreshPanelUsers();
 
         this.panelAdminUserDetailAdd.setVisible(false);
 
@@ -122,10 +121,7 @@ public class PanelAdminUsersView extends JPanel implements ActionListener, ListS
 
     private void displayPanelUserAdd() {
         this.leftBar.setVisible(false);
-//
         this.panelAdminUserDetailModify.setVisible(false);
-//
-//        this.panelAdminUserDetailAdd.setOnEditMode(true);
         this.panelAdminUserDetailAdd.setVisible(true);
     }
 
@@ -134,8 +130,11 @@ public class PanelAdminUsersView extends JPanel implements ActionListener, ListS
         this.showNormal();
     }
 
-    private void refreshPanelUsers(){
+    public void refreshPanelUsers(){
+        this.panelUsers.setVisible(false);
         this.panelUsers.rebuild(this.userService.getList());
+        this.panelUsers.getLabelList().addListSelectionListener(this);
+        this.panelUsers.setVisible(true);
     }
 
     public PanelList<User> getPanel() {

@@ -29,6 +29,6 @@ public class PanelAdminUserDetailAdd extends PanelAdminUserDetail implements Act
         }
 
         this.panelParent.onAdminUserAddFinish();
-        this.cleanTF();
+        this.clearAllTextFields();
     }
 }
