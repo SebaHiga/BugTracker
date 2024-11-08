@@ -36,7 +36,7 @@ public abstract class PanelProjectsAbstract extends PanelAbstract {
         });
     }
 
-    private void inTicketSelection(){
+    private void inTicketSelection() {
         var selectedTicket = this.panelTickets.getSelectedTicket();
         this.panelTicketDetail.showTicket(selectedTicket);
     }

@@ -15,7 +15,7 @@ public class PanelFormLogin extends JPanel {
     }
 
     public void build() {
-        this.setLayout(new GridLayout(2,2));
+        this.setLayout(new GridLayout(2, 2));
 
         this.usernameLbl = new JLabel("Username");
         this.passwordLbl = new JLabel("Password");

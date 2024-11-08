@@ -31,11 +31,11 @@ public class PanelLogin extends PanelAbstract implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        if(actionEvent.getSource() == this.panelOkCancel.getOkBtn()) {
+        if (actionEvent.getSource() == this.panelOkCancel.getOkBtn()) {
             UserService service = new UserService();
             String user = this.formLogin.getUsernameTxt().getText();
             String pass = this.formLogin.getPasswordTxt().getText();
-            if (service.verifyUserIdentity(user, pass)){
+            if (service.verifyUserIdentity(user, pass)) {
                 this.mainFrame.displayPanelProjectsUser();
             }
         }

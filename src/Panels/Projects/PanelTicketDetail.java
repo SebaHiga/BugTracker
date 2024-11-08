@@ -11,7 +11,7 @@ public class PanelTicketDetail extends PanelAbstract {
 
     private JTextField descriptionTF;
 
-    PanelTicketDetail(MainFrame mainFrame){
+    PanelTicketDetail(MainFrame mainFrame) {
         super(mainFrame);
     }
 
@@ -19,16 +19,15 @@ public class PanelTicketDetail extends PanelAbstract {
         this.removeAll();
     }
 
-    public void showTicket(Ticket ticket){
+    public void showTicket(Ticket ticket) {
         clean();
 
-        if(this.descriptionTF == null){
+        if (this.descriptionTF == null) {
             this.descriptionTF = new JTextField(ticket.getDescription());
-        }
-        else{
+        } else {
             this.descriptionTF.setText(ticket.getDescription());
         }
-        
+
         this.add(this.descriptionTF);
     }
 }
