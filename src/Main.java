@@ -17,26 +17,24 @@ public class Main {
         var mainFrame = new MainFrame();
     }
 
-    public static void initializeDemo(){
+    public static void initializeDemo() {
 
         var userService = new UserService();
         var ticketService = new TicketService();
 
-        try{
+        try {
             userService.add(new User("admin", "admin@admin.com", "password"));
             ticketService.add(new Ticket("BGT-001", "Primer bug de prueba"));
             ticketService.add(new Ticket("BGT-002", "Segundo bug de prueba"));
             ticketService.add(new Ticket("BGT-003", "Tercer bug de prueba"));
-        }
-        catch (ServiceException exception){
+        } catch (ServiceException exception) {
             // DataBase.Users.User admin already created
         }
-        try{
+        try {
             ticketService.add(new Ticket("BGT-001", "Primer bug de prueba"));
             ticketService.add(new Ticket("BGT-002", "Segundo bug de prueba"));
             ticketService.add(new Ticket("BGT-003", "Tercer bug de prueba"));
-        }
-        catch (ServiceException exception){
+        } catch (ServiceException exception) {
             // DataBase.Users.User admin already created
         }
     }

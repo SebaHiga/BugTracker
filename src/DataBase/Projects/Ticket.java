@@ -1,6 +1,8 @@
 package DataBase.Projects;
 
-public class Ticket {
+import DataBase.EntityAbstract;
+
+public class Ticket extends EntityAbstract {
 
     private String internalId;
     private String description;
@@ -12,6 +14,10 @@ public class Ticket {
 
     public String getInternalId() {
         return this.internalId;
+    }
+
+    public String getLabel() {
+        return this.getInternalId();
     }
 
     public void setInternalId(String internalId) {

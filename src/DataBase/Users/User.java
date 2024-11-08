@@ -1,8 +1,10 @@
 package DataBase.Users;
 
+import DataBase.EntityAbstract;
+
 import java.util.List;
 
-public class User {
+public class User extends EntityAbstract {
 
     private int id;
     private String name;
@@ -20,6 +22,10 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public String getLabel() {
+        return this.getName();
     }
 
     public void setName(String name) {

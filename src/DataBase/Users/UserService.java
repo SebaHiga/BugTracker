@@ -8,11 +8,11 @@ import java.util.List;
 public class UserService {
     private final UserDAO dao;
 
-    public UserService(){
+    public UserService() {
         this.dao = new UserDAOH2Impl();
     }
 
-    public List<User> getList() throws ServiceException {
+    public List<User> getList() {
         return this.dao.getList();
     }
 
@@ -28,13 +28,21 @@ public class UserService {
         this.dao.update(user);
     }
 
-    public boolean verifyUserIdentity(String userName, String userPass){
+    public boolean verifyUserIdentity(String userName, String userPass) {
         var user = this.dao.getUserByName(userName);
 
-        if (user == null){
+        if (user == null) {
             return false;
         }
 
         return user.getName().equals(userName) && user.getPass().equals(userPass);
+    }
+
+    public boolean verifyUserPrivileges(String userName) {
+        return userName.equals("admin");
+    }
+
+    public boolean verifyUserPrivileges(User user) {
+        return user.getName().equals("admin");
     }
 }

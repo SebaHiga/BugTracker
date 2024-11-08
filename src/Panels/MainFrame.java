@@ -1,23 +1,31 @@
 package Panels;
 
+import DataBase.ServiceException;
+import Panels.Admin.PanelAdmin;
 import Panels.Login.PanelLogin;
 import Panels.Projects.PanelProjectsUser;
 
 import javax.swing.*;
+import java.awt.*;
 
-public class MainFrame extends JFrame{
+public class MainFrame extends JFrame {
     private JFrame mainFrame;
 
     private PanelLogin panelLogin;
     private PanelProjectsUser panelProjectsUser;
+    private PanelAdmin panelAdmin;
 
-    public MainFrame(){
+    public MainFrame() {
         this.mainFrame = new JFrame();
         this.mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         this.panelLogin = new PanelLogin(this);
         this.panelProjectsUser = new PanelProjectsUser(this);
-//        displayLoginPane();
-        displayPanelProjectsUser();
+        this.panelAdmin = new PanelAdmin(this);
+
+        displayLoginPane();
+//        displayPanelProjectsUser();
+        this.mainFrame.setVisible(true);
     }
 
     public void displayLoginPane() {
@@ -27,9 +35,16 @@ public class MainFrame extends JFrame{
         this.mainFrame.setVisible(true);
     }
 
-    public void displayPanelProjectsUser(){
+    public void displayPanelProjectsUser() {
         this.mainFrame.getContentPane().removeAll();
         this.mainFrame.getContentPane().add(this.panelProjectsUser);
+        this.mainFrame.pack();
+        this.mainFrame.setVisible(true);
+    }
+
+    public void displayPanelAdmin() {
+        this.mainFrame.getContentPane().removeAll();
+        this.mainFrame.getContentPane().add(this.panelAdmin);
         this.mainFrame.pack();
         this.mainFrame.setVisible(true);
     }
