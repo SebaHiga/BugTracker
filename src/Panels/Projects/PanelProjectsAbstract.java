@@ -1,38 +1,43 @@
 package Panels.Projects;
 
 import DataBase.Projects.Ticket;
-import DataBase.Projects.TicketService;
 import Panels.MainFrame;
 import Panels.PanelAbstract;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public abstract class PanelProjectsAbstract extends PanelAbstract {
-    private JList ticketList;
+    private PanelTicketList panelTickets;
+    private PanelTicketDetail panelTicketDetail;
 
     public PanelProjectsAbstract(MainFrame mainFrame) {
         super(mainFrame);
         build();
     }
 
-
     public void build() {
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
-        this.ticketList = new JList();
+        this.panelTickets = new PanelTicketList(this.mainFrame);
+        this.panelTicketDetail = new PanelTicketDetail(this.mainFrame);
 
-        var ticketService = new TicketService();
+        this.add(this.panelTickets);
+        this.add(this.panelTicketDetail);
 
-        var tickets = ticketService.getList();
+        this.panelTickets.getTicketList().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent arg0) {
+                inTicketSelection();
+            }
+        });
+    }
 
-        var defList = new DefaultListModel<String>();
-
-        for(var t : tickets) {
-            defList.addElement(t.getInternalId());
-        }
-
-        this.ticketList = new JList(defList);
-
-        this.add(this.ticketList);
+    private void inTicketSelection(){
+        var selectedTicket = this.panelTickets.getSelectedTicket();
+        this.panelTicketDetail.showTicket(selectedTicket);
     }
 }

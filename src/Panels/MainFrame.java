@@ -16,7 +16,8 @@ public class MainFrame extends JFrame{
         this.mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.panelLogin = new PanelLogin(this);
         this.panelProjectsUser = new PanelProjectsUser(this);
-        displayLoginPane();
+//        displayLoginPane();
+        displayPanelProjectsUser();
     }
 
     public void displayLoginPane() {

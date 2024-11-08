@@ -12,8 +12,8 @@ public class PanelOkCancel extends JPanel {
     }
 
     private void build() {
-        this.okBtn = new JButton("ACCEPT");
-        this.cancelBtn = new JButton("CANCEL");
+        this.okBtn = new JButton("Accept");
+        this.cancelBtn = new JButton("Cancel");
         this.add(okBtn);
         this.add(cancelBtn);
     }
