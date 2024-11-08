@@ -21,10 +21,6 @@ public class PanelAdminUserDetailAdd extends PanelAdminUserDetail implements Act
             var email = this.emailTF.getText();
             var password = this.passwordTF.getText();
 
-            this.nameTF.setText("");
-            this.emailTF.setText("");
-            this.passwordTF.setText("");
-
             try {
                 new UserService().add(new User(name, email, password));
             } catch (ServiceException e) {
@@ -33,5 +29,6 @@ public class PanelAdminUserDetailAdd extends PanelAdminUserDetail implements Act
         }
 
         this.panelParent.onAdminUserAddFinish();
+        this.cleanTF();
     }
 }

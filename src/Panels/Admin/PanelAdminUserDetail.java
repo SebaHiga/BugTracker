@@ -45,6 +45,10 @@ public class PanelAdminUserDetail extends JPanel {
         this.passwordTF.setText(user.getPass());
     }
 
+    public void cleanTF(){
+        this.populateWithUser(new User("", "", ""));
+    }
+
     public void setOnEditMode(boolean editable) {
         this.nameTF.setEditable(editable);
         this.emailTF.setEditable(editable);

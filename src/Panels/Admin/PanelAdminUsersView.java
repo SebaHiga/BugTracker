@@ -112,7 +112,7 @@ public class PanelAdminUsersView extends JPanel implements ActionListener, ListS
                     this.userService.delete(selectedUser);
                     refreshPanelUsers();
                     this.leftBar.setVisible(false);
-                    this.leftBar.setVisible(true);
+                    this.showNormal();
                 } catch (ServiceException e) {
                     e.printStackTrace();
                 }
@@ -130,8 +130,8 @@ public class PanelAdminUsersView extends JPanel implements ActionListener, ListS
     }
 
     public void onAdminUserAddFinish() {
-        this.showNormal();
         refreshPanelUsers();
+        this.showNormal();
     }
 
     private void refreshPanelUsers(){
