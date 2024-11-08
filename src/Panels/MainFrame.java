@@ -17,7 +17,7 @@ public class MainFrame extends JFrame {
 
     public MainFrame() {
         this.mainFrame = new JFrame();
-        this.mainFrame.setSize(300, 300);
+        this.mainFrame.setSize(700, 800);
 
         this.mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

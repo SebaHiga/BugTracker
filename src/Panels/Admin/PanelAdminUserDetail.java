@@ -10,20 +10,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PanelAdminUserAdd extends JPanel implements ActionListener {
-    private PanelAdminUsersView panelParent;
+public class PanelAdminUserDetail extends JPanel {
+    protected PanelAdminUsersView panelParent;
 
     private JLabel nameLabel;
     private JLabel emailLabel;
     private JLabel passwordLabel;
 
-    private JTextField nameTF;
-    private JTextField emailTF;
-    private JTextField passwordTF;
+    protected JTextField nameTF;
+    protected JTextField emailTF;
+    protected JTextField passwordTF;
 
-    private PanelOkCancel panelOkCancel;
+    protected PanelOkCancel panelOkCancel;
 
-    public PanelAdminUserAdd(PanelAdminUsersView parentPanel) {
+    public PanelAdminUserDetail(PanelAdminUsersView parentPanel) {
         this.panelParent = parentPanel;
 
         build();
@@ -37,32 +37,33 @@ public class PanelAdminUserAdd extends JPanel implements ActionListener {
         this.add(getFormPane());
         this.add(panelOkCancel);
 
-        this.panelOkCancel.getOkBtn().addActionListener(this);
-        this.panelOkCancel.getCancelBtn().addActionListener(this);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == this.panelOkCancel.getOkBtn()) {
-            var name = this.nameTF.getText();
-            var email = this.emailTF.getText();
-            var password = this.passwordTF.getText();
+    public void populateWithUser(User user) {
+        this.nameTF.setText(user.getName());
+        this.emailTF.setText(user.getEmail());
+        this.passwordTF.setText(user.getPass());
+    }
 
-            try{
-                new UserService().add(new User(name, email, password));
-            }
-            catch (ServiceException e){
-                // Couldn't add user, name already taken
-            }
+    public void setOnEditMode(boolean editable) {
+        this.nameTF.setEditable(editable);
+        this.emailTF.setEditable(editable);
+        this.passwordTF.setEditable(editable);
+        this.panelOkCancel.setVisible(editable);
 
-            this.panelParent.onAdminUserAddFinish(true);
-        }
-        if (actionEvent.getSource() == this.panelOkCancel.getCancelBtn()) {
-            this.panelParent.onAdminUserAddFinish(false);
+        if (!editable){
+            setTFDisabled(this.nameTF);
+            setTFDisabled(this.emailTF);
+            setTFDisabled(this.passwordTF);
         }
     }
 
-    JPanel getFormPane(){
+    private void setTFDisabled(JTextField tf){
+        tf.setBackground(new Color(240, 240, 240));
+        tf.setForeground(Color.gray);
+    }
+
+    JPanel getFormPane() {
         var formGrid = new JPanel();
         formGrid.setLayout(new GridLayout(3, 3));
 

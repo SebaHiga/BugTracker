@@ -49,6 +49,10 @@ public class PanelList<T> extends JPanel {
     public T getSelectedItem() {
         var selectedItem = this.labelList.getSelectedValue();
 
+        if (selectedItem == null){
+            return null;
+        }
+
         var selected = this.list.stream().filter(item -> ((EntityAbstract) item).getLabel().equals(selectedItem)).toList();
 
         return selected.getFirst();

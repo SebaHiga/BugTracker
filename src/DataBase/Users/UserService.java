@@ -1,5 +1,6 @@
 package DataBase.Users;
 
+import DataBase.DAOException;
 import DataBase.ExceptionObjectDuplicated;
 import DataBase.ServiceException;
 
@@ -27,7 +28,15 @@ public class UserService {
         }
     }
 
-    public void edit(User user) throws ServiceException {
+    public void delete(User user) throws ServiceException {
+        try {
+            this.dao.delete(user);
+        } catch (DAOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void update(User user) throws ServiceException {
         this.dao.update(user);
     }
 

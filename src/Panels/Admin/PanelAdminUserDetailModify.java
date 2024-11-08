@@ -1,0 +1,41 @@
+package Panels.Admin;
+
+import DataBase.ServiceException;
+import DataBase.Users.User;
+import DataBase.Users.UserService;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class PanelAdminUserDetailModify extends PanelAdminUserDetail implements ActionListener {
+    public PanelAdminUserDetailModify(PanelAdminUsersView parentPanel) {
+        super(parentPanel);
+        this.panelOkCancel.getOkBtn().addActionListener(this);
+        this.panelOkCancel.getCancelBtn().addActionListener(this);
+    }
+
+    public void populate(User user){
+        this.nameTF.setText(user.getName());
+        this.emailTF.setText(user.getEmail());
+        this.passwordTF.setText(user.getPass());
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == this.panelOkCancel.getOkBtn()) {
+            var name = this.nameTF.getText();
+            var email = this.emailTF.getText();
+            var password = this.passwordTF.getText();
+
+            this.nameTF.setText("");
+            this.emailTF.setText("");
+            this.passwordTF.setText("");
+
+            try {
+                new UserService().update(new User(name, email, password));
+            } catch (ServiceException e) {
+                // Couldn't add user, name already taken
+            }
+        }
+    }
+}

@@ -78,7 +78,7 @@ public class TableManager {
             try {
                 c.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         }
     }
