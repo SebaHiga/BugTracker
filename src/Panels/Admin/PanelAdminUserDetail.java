@@ -29,14 +29,13 @@ public class PanelAdminUserDetail extends JPanel {
         build();
     }
 
-    private void build() {
+    protected void build() {
         this.panelOkCancel = new PanelOkCancel();
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(getFormPane());
         this.add(panelOkCancel);
-
     }
 
     public void populateWithUser(User user) {
