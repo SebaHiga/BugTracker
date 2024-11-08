@@ -23,7 +23,7 @@ public abstract class PanelProjectsAbstract extends PanelAbstract {
     public void build() {
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
-        this.panelTickets = new PanelList<Ticket>(this.mainFrame);
+        this.panelTickets = new PanelList<Ticket>();
         this.panelTickets.build(new TicketService().getList());
 
         this.panelTicketDetail = new PanelTicketDetail(this.mainFrame);

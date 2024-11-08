@@ -33,6 +33,7 @@ public class PanelLogin extends PanelAbstract implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource() == this.panelOkCancel.getOkBtn()) {
             UserService service = new UserService();
+
             String user = this.formLogin.getUsernameTxt().getText();
             String pass = this.formLogin.getPasswordTxt().getText();
 

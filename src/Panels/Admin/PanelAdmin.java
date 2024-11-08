@@ -1,18 +1,15 @@
 package Panels.Admin;
 
-import DataBase.ServiceException;
-import DataBase.Users.User;
-import DataBase.Users.UserService;
 import Panels.MainFrame;
 import Panels.PanelAbstract;
-import Panels.PanelList;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 public class PanelAdmin extends PanelAbstract {
-    private PanelList<User> panelUsers;
+    private PanelAdminViewSelector panelViewSelector;
+    private PanelAdminUsersView panelUserView;
 
     public PanelAdmin(MainFrame mainFrame) {
         super(mainFrame);
@@ -20,14 +17,16 @@ public class PanelAdmin extends PanelAbstract {
     }
 
     private void build() {
-        this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        this.panelUsers = new PanelList<User>(this.mainFrame);
-        this.panelUsers.build(new UserService().getList());
+        this.panelUserView = new PanelAdminUsersView();
 
-        this.add(this.panelUsers);
+        this.panelViewSelector = new PanelAdminViewSelector();
 
-        this.panelUsers.getLabelList().addListSelectionListener(new ListSelectionListener() {
+        this.add(this.panelViewSelector);
+        this.add(this.panelUserView);
+
+        this.panelUserView.getPanelList().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent arg0) {
                 inTicketSelection();
@@ -36,6 +35,6 @@ public class PanelAdmin extends PanelAbstract {
     }
 
     private void inTicketSelection() {
-        var selectedTicket = this.panelUsers.getSelectedItem();
+        var selectedTicket = this.panelUserView.getPanel().getSelectedItem();
     }
 }

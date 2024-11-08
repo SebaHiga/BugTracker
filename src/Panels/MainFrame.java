@@ -23,8 +23,9 @@ public class MainFrame extends JFrame {
         this.panelProjectsUser = new PanelProjectsUser(this);
         this.panelAdmin = new PanelAdmin(this);
 
-        displayLoginPane();
+//        displayLoginPane();
 //        displayPanelProjectsUser();
+        displayPanelAdmin();
         this.mainFrame.setVisible(true);
     }
 

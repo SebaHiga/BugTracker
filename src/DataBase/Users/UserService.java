@@ -13,7 +13,10 @@ public class UserService {
     }
 
     public List<User> getList() {
-        return this.dao.getList();
+        var list = this.dao.getList();
+
+        var ret = list.stream().filter(user -> !this.verifyUserPrivileges(user)).toList();
+        return ret;
     }
 
     public void add(User user) throws ServiceException {
