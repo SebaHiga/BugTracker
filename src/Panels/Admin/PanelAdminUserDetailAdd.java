@@ -4,6 +4,7 @@ import DataBase.ServiceException;
 import DataBase.Users.User;
 import DataBase.Users.UserService;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,6 +26,9 @@ public class PanelAdminUserDetailAdd extends PanelAdminUserDetail implements Act
                 new UserService().add(new User(name, email, password));
             } catch (ServiceException e) {
                 // Couldn't add user, name already taken
+                JOptionPane.showMessageDialog(this, "User already exists! Try changing user names",
+                        "User add error", JOptionPane.ERROR_MESSAGE);
+                return;
             }
         }
 

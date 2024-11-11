@@ -58,10 +58,19 @@ public class PanelAdminUserDetailModify extends PanelAdminUserDetail implements 
         }
 
         if (actionEvent.getSource() == this.panelOkCancel.getOkBtn()) {
+            if (name.isEmpty() || email.isEmpty() ||password.isEmpty()){
+                JOptionPane.showMessageDialog(this, "Please fill all fields",
+                        "User modify error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             try {
                 new UserService().update(new User(name, email, password));
             } catch (ServiceException e) {
                 // Couldn't add user, name already taken
+                JOptionPane.showMessageDialog(this, "User already exists! Try changing user names",
+                        "User modify error", JOptionPane.ERROR_MESSAGE);
+                return;
             }
 
             this.panelOkCancel.setVisible(false);

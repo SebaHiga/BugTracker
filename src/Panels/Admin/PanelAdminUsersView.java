@@ -71,8 +71,9 @@ public class PanelAdminUsersView extends JPanel implements ActionListener, ListS
     }
 
     public void showNormal(){
-
         this.refreshPanelUsers();
+
+        this.leftBar.setVisible(true);
 
         this.panelAdminUserDetailAdd.setVisible(false);
 
@@ -109,8 +110,6 @@ public class PanelAdminUsersView extends JPanel implements ActionListener, ListS
             if(result == JOptionPane.YES_OPTION) {
                 try {
                     this.userService.delete(selectedUser);
-                    refreshPanelUsers();
-                    this.leftBar.setVisible(false);
                     this.showNormal();
                 } catch (ServiceException e) {
                     e.printStackTrace();

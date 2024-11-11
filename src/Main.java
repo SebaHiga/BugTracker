@@ -23,20 +23,20 @@ public class Main {
 
         try {
             userService.add(new User("sebastian", "sebas@bugtracker.com", "1234"));
-//            userService.add(new User("admin", "admin@admin.com", "password"));
-//            ticketService.add(new Ticket("BGT-001", "Primer bug de prueba"));
-//            ticketService.add(new Ticket("BGT-002", "Segundo bug de prueba"));
-//            ticketService.add(new Ticket("BGT-003", "Tercer bug de prueba"));
+            userService.add(new User("admin", "admin@admin.com", "password"));
+            ticketService.add(new Ticket("BGT-001", "Primer bug de prueba"));
+            ticketService.add(new Ticket("BGT-002", "Segundo bug de prueba"));
+            ticketService.add(new Ticket("BGT-003", "Tercer bug de prueba"));
         } catch (ServiceException exception) {
             // DataBase.Users.User admin already created
         }
-//        try {
-//            ticketService.add(new Ticket("BGT-001", "Primer bug de prueba"));
-//            ticketService.add(new Ticket("BGT-002", "Segundo bug de prueba"));
-//            ticketService.add(new Ticket("BGT-003", "Tercer bug de prueba"));
-//        } catch (ServiceException exception) {
-//            // DataBase.Users.User admin already created
-//        }
+        try {
+            ticketService.add(new Ticket("BGT-001", "Primer bug de prueba"));
+            ticketService.add(new Ticket("BGT-002", "Segundo bug de prueba"));
+            ticketService.add(new Ticket("BGT-003", "Tercer bug de prueba"));
+        } catch (ServiceException exception) {
+            // DataBase.Users.User admin already created
+        }
     }
 
 
