@@ -1,6 +1,6 @@
 package Panels.Admin;
 
-import DataBase.ServiceException;
+import DataBase.Exceptions.ServiceException;
 import DataBase.Users.User;
 import DataBase.Users.UserService;
 import Panels.PanelList;
@@ -110,9 +110,12 @@ public class PanelAdminUsersView extends JPanel implements ActionListener, ListS
             if(result == JOptionPane.YES_OPTION) {
                 try {
                     this.userService.delete(selectedUser);
-                    this.showNormal();
                 } catch (ServiceException e) {
-                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(this, e.getCause().getMessage(),
+                            "User modify error", JOptionPane.ERROR_MESSAGE);
+                }
+                finally {
+                    this.showNormal();
                 }
             }
         }

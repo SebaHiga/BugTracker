@@ -1,19 +1,19 @@
 package DataBase.Users;
 
-import DataBase.DAOException;
-import DataBase.ExceptionObjectDuplicated;
+import DataBase.Exceptions.DAOException;
+import DataBase.Exceptions.H2ExceptionRollback;
 
 import java.util.List;
 
 public interface UserDAO {
 
-    void create(User user) throws ExceptionObjectDuplicated;
+    void create(User user) throws DAOException;
 
     void delete(User user) throws DAOException;
 
-    void update(User user);
+    void update(User user) throws DAOException;
 
-    User getUserByName(String username);
+    User getUserByName(String username) throws  DAOException;
 
     List<User> getList();
 

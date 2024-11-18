@@ -1,5 +1,6 @@
 package Panels.Login;
 
+import DataBase.Exceptions.ServiceException;
 import DataBase.Users.UserService;
 import Panels.PanelAbstract;
 import Panels.MainFrame;
@@ -38,12 +39,26 @@ public class PanelLogin extends PanelAbstract implements ActionListener {
             String user = this.formLogin.getUsernameTxt().getText();
             String pass = this.formLogin.getPasswordTxt().getText();
 
-            if (service.verifyUserIdentity(user, pass)) {
-                if (service.verifyUserPrivileges(user)) {
-                    this.mainFrame.displayPanelAdmin();
-                } else {
-                    this.mainFrame.displayPanelProjectsUser();
-                }
+            var userExist = false;
+
+            try {
+                userExist = service.verifyUserIdentity(user, pass);
+            } catch (ServiceException e) {
+                JOptionPane.showMessageDialog(this, "User or password are incorrect",
+                        "User identity error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (!userExist){
+                JOptionPane.showMessageDialog(this, "User or password are incorrect",
+                        "User identity error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (service.verifyUserPrivileges(user)) {
+                this.mainFrame.displayPanelAdmin();
+            } else {
+                this.mainFrame.displayPanelProjectsUser();
             }
         }
     }

@@ -1,8 +1,8 @@
 package DataBase.Projects;
 
-import DataBase.DAOException;
+import DataBase.Exceptions.DAOException;
 import DataBase.DBManager;
-import DataBase.ExceptionObjectDuplicated;
+import DataBase.Exceptions.ExceptionObjectDuplicated;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,7 +24,7 @@ public class TicketDAOH2Impl implements TicketDAO{
                 connection.rollback();
                 sqlException.printStackTrace();
                 if(sqlException.getErrorCode() == 23505) {
-                    throw new ExceptionObjectDuplicated();
+//                    throw new ExceptionObjectDuplicated();
                 }
             } catch (SQLException sqlException1) {
                 sqlException1.printStackTrace();
@@ -51,7 +51,7 @@ public class TicketDAOH2Impl implements TicketDAO{
             } catch (SQLException sqlException1) {
                 // TODO: Handle when rollback fails
             }
-            throw new DAOException();
+//            throw new DAOException();
         } finally {
             try {
                 connection.close();

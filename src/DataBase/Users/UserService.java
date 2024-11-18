@@ -1,12 +1,13 @@
 package DataBase.Users;
 
-import DataBase.DAOException;
-import DataBase.ExceptionObjectDuplicated;
-import DataBase.ServiceException;
+import DataBase.Exceptions.DAOException;
+import DataBase.Exceptions.ServiceException;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 public class UserService {
+    private static final Logger LOGGER = Logger.getLogger(UserService.class.getName());
     private final UserDAO dao;
 
     public UserService() {
@@ -23,8 +24,9 @@ public class UserService {
     public void add(User user) throws ServiceException {
         try {
             this.dao.create(user);
-        } catch (ExceptionObjectDuplicated e) {
-            throw new ServiceException(e);
+        } catch (DAOException e) {
+            LOGGER.warning(e.toString());
+            throw new ServiceException(e); // placeholder
         }
     }
 
@@ -32,16 +34,25 @@ public class UserService {
         try {
             this.dao.delete(user);
         } catch (DAOException e) {
-            throw new RuntimeException(e);
+            throw new ServiceException(e);
         }
     }
 
     public void update(User user) throws ServiceException {
-        this.dao.update(user);
+        try {
+            this.dao.update(user);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
     }
 
-    public boolean verifyUserIdentity(String userName, String userPass) {
-        var user = this.dao.getUserByName(userName);
+    public boolean verifyUserIdentity(String userName, String userPass) throws ServiceException {
+        User user = null;
+        try {
+            user = this.dao.getUserByName(userName);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
 
         if (user == null) {
             return false;
@@ -55,6 +66,6 @@ public class UserService {
     }
 
     public boolean verifyUserPrivileges(User user) {
-        return user.getName().equals("admin");
+        return this.verifyUserPrivileges(user.getName());
     }
 }

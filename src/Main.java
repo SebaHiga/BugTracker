@@ -1,7 +1,7 @@
 import DataBase.Projects.Ticket;
 import DataBase.Projects.TicketService;
 import DataBase.Tables.TableManager;
-import DataBase.ServiceException;
+import DataBase.Exceptions.ServiceException;
 import DataBase.Users.User;
 import DataBase.Users.UserService;
 import Panels.MainFrame;

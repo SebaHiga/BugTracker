@@ -1,6 +1,6 @@
 package Panels.Admin;
 
-import DataBase.ServiceException;
+import DataBase.Exceptions.ServiceException;
 import DataBase.Users.User;
 import DataBase.Users.UserService;
 

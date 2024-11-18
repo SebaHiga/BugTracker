@@ -1,7 +1,7 @@
 package DataBase.Projects;
 
-import DataBase.DAOException;
-import DataBase.ExceptionObjectDuplicated;
+import DataBase.Exceptions.DAOException;
+import DataBase.Exceptions.ExceptionObjectDuplicated;
 
 import java.util.List;
 

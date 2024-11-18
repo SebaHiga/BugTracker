@@ -1,12 +1,10 @@
 package Panels;
 
-import DataBase.ServiceException;
 import Panels.Admin.PanelAdmin;
 import Panels.Login.PanelLogin;
 import Panels.Projects.PanelProjectsUser;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class MainFrame extends JFrame {
     private JFrame mainFrame;
@@ -25,9 +23,9 @@ public class MainFrame extends JFrame {
         this.panelProjectsUser = new PanelProjectsUser(this);
         this.panelAdmin = new PanelAdmin(this);
 
-//        displayLoginPane();
+        displayLoginPane();
 //        displayPanelProjectsUser();
-        displayPanelAdmin();
+//        displayPanelAdmin();
         this.mainFrame.setVisible(true);
     }
 

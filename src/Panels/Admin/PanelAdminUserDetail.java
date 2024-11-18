@@ -45,18 +45,18 @@ public class PanelAdminUserDetail extends JPanel {
     }
 
     public void setOnEditMode(boolean editable) {
-        this.nameTF.setEditable(editable);
+        this.nameTF.setEditable(false);
         this.emailTF.setEditable(editable);
         this.passwordTF.setEditable(editable);
         this.panelOkCancel.setVisible(editable);
 
+        setTFDisabled(this.nameTF);
+
         if (!editable){
-            setTFDisabled(this.nameTF);
             setTFDisabled(this.emailTF);
             setTFDisabled(this.passwordTF);
         }
         else{
-            setTFEnabled(this.nameTF);
             setTFEnabled(this.emailTF);
             setTFEnabled(this.passwordTF);
         }

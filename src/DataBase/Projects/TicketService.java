@@ -1,7 +1,7 @@
 package DataBase.Projects;
 
-import DataBase.ExceptionObjectDuplicated;
-import DataBase.ServiceException;
+import DataBase.Exceptions.ExceptionObjectDuplicated;
+import DataBase.Exceptions.ServiceException;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class TicketService {
         try {
             this.dao.create(ticket);
         } catch (ExceptionObjectDuplicated e) {
-            throw new ServiceException(e);
+//            throw new ServiceException(e);
         }
     }
 

@@ -1,6 +1,6 @@
 package Panels.Admin;
 
-import DataBase.ServiceException;
+import DataBase.Exceptions.ServiceException;
 import DataBase.Users.User;
 import DataBase.Users.UserService;
 
@@ -26,7 +26,7 @@ public class PanelAdminUserDetailAdd extends PanelAdminUserDetail implements Act
                 new UserService().add(new User(name, email, password));
             } catch (ServiceException e) {
                 // Couldn't add user, name already taken
-                JOptionPane.showMessageDialog(this, "User already exists! Try changing user names",
+                JOptionPane.showMessageDialog(this, e.getCause().getMessage(),
                         "User add error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
